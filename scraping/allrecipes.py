@@ -15,9 +15,11 @@ from unidecode import unidecode
 from dotenv import load_dotenv
 import os
 
-PATH = r"C:\Program Files (x86)\chromedriver.exe"
-service = Service(PATH)
-driver = webdriver.Chrome(service=service)
+
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
 driver.get("https://www.allrecipes.com/ingredients-a-z-6740416")   
 
 links=[]
@@ -28,4 +30,10 @@ except:
     print('error in getting links')
 
 for k,alphabet in enumerate(alphabets) :
-    link = alphabet.find_element(By.TAG_NAME, 'a').get_attribute("href")
+    ingredients = alphabet.find_elements(By.CLASS_NAME, 'link-list__item')
+    for i,ingredient in enumerate(ingredients):
+        link = ingredient.get_attribute("href")
+        if i>3 :
+            break
+        links.append(link)
+print(links)
