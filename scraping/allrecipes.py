@@ -15,12 +15,11 @@ from unidecode import unidecode
 from dotenv import load_dotenv
 import os
 
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+
 
 service = Service()
-options = webdriver.ChromeOptions()
-driver = webdriver.Chrome(service=service, options=options)
+driver = webdriver.Chrome(service=service,options=Options)
+
 
 driver.get("https://www.allrecipes.com/ingredients-a-z-6740416")   
 
