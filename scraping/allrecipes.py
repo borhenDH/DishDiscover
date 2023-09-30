@@ -10,15 +10,14 @@ import time
 import psycopg2
 import json
 import re
-import boto3
 from unidecode import unidecode
 from dotenv import load_dotenv
 import os
 
+service = Service(service_args=["--disable-build-check"])
+options = webdriver.ChromeOptions()
+driver = webdriver.Chrome(service=service, options=options)
 
-
-service = Service()
-driver = webdriver.Chrome(service=service,options=Options)
 
 
 driver.get("https://www.allrecipes.com/ingredients-a-z-6740416")   
