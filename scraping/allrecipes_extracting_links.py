@@ -4,15 +4,8 @@ from selenium.webdriver.edge.service import Service
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
-from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import NoSuchElementException
 import time
-import psycopg2
-import json
-import re
-from unidecode import unidecode
-from dotenv import load_dotenv
-import os
+
 
 
 PATH = r"C:\Program Files (x86)\msedgedriver"
@@ -39,5 +32,6 @@ for k,alphabet in enumerate(alphabets) :
         link_container = element.find_element(By.TAG_NAME,"a")
         link = link_container.get_attribute("href")
         links.append(link)
-
+df = pd.DataFrame({'Links': links})
+df.to_excel("links_sheet.xlsx", index=False)
 
