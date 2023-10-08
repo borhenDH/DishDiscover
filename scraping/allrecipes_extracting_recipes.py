@@ -13,3 +13,6 @@ import re
 from unidecode import unidecode
 from dotenv import load_dotenv
 import os
+
+links  = pd.read_excel("links_sheet.xlsx")
+print(links)
