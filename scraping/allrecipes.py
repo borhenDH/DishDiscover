@@ -34,12 +34,14 @@ driver.get("https://www.allrecipes.com/ingredients-a-z-6740416")
 links=[]
 try:    
     container = WebDriverWait(driver, 7).until(EC.presence_of_element_located((By.ID,'alphabetical-list_1-0')))
+    time.sleep(5)
     alphabets = container.find_elements(By.CLASS_NAME,'alphabetical-list__group')
 except:
     print('error in getting links')
 
 for k,alphabet in enumerate(alphabets) :
     ingredients = alphabet.find_elements(By.CLASS_NAME, 'link-list__item')
+    time.sleep(5)
     for i,ingredient in enumerate(ingredients):
         link = ingredient.get_attribute("href")
         if i>3 :
