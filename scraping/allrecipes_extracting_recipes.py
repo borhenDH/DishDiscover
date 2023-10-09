@@ -14,5 +14,19 @@ from unidecode import unidecode
 from dotenv import load_dotenv
 import os
 
+
+PATH = r"C:\Program Files (x86)\msedgedriver"
+service = Service(PATH)
+driver = webdriver.Edge(service=service)
+recipes_links = []
 links  = pd.read_excel("links_sheet.xlsx")
-print(links)
+links_list = links['Links'].tolist()
+for link in links_list :
+    driver.get(link)
+    time.sleep(4)
+    container = driver.find_element(By.ID,"mntl-taxonomysc-article-list-group_1-0")
+    cards = container.find_elements(By.CLASS_NAME,"mntl-card-list-items")
+    for i,card in enumerate(cards) :
+        recipe_link = card.get_attribute("href")
+        recipes_links.append(recipe_link)
+
