@@ -29,4 +29,5 @@ for link in links_list :
     for i,card in enumerate(cards) :
         recipe_link = card.get_attribute("href")
         recipes_links.append(recipe_link)
-
+df = pd.DataFrame({'recipes_Links': recipes_links})
+df.to_excel("recipes_links_sheet.xlsx", index=False)
